@@ -2,7 +2,7 @@ package asynergy.yin.ying.Nagme;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 /**
  * SetWeekly allows the user to set the days of the week for a weekly reminder to ring
  */
-public class SetWeekly extends ActionBarActivity {
+public class SetWeekly extends AppCompatActivity {
 
     public static String WEEKDAY_ARRAY= "weekday_array";
 
@@ -22,21 +22,21 @@ public class SetWeekly extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.set_days);
 
-        final CustomSwitch sunday = (CustomSwitch) findViewById(R.id.Sunday);
-        final CustomSwitch monday = (CustomSwitch) findViewById(R.id.Monday);
-        final CustomSwitch tuesday = (CustomSwitch) findViewById(R.id.Tuesday);
-        final CustomSwitch wednesday = (CustomSwitch) findViewById(R.id.Wednesday);
-        final CustomSwitch thursday = (CustomSwitch) findViewById(R.id.Thursday);
-        final CustomSwitch friday = (CustomSwitch) findViewById(R.id.Friday);
-        final CustomSwitch saturday = (CustomSwitch) findViewById(R.id.Saturday);
-        final ArrayList<CustomSwitch> customSwitches = new ArrayList<>();
-        customSwitches.add(sunday);
-        customSwitches.add(monday);
-        customSwitches.add(tuesday);
-        customSwitches.add(wednesday);
-        customSwitches.add(thursday);
-        customSwitches.add(friday);
-        customSwitches.add(saturday);
+        final ToggleSlider sunday = (ToggleSlider) findViewById(R.id.Sunday);
+        final ToggleSlider monday = (ToggleSlider) findViewById(R.id.Monday);
+        final ToggleSlider tuesday = (ToggleSlider) findViewById(R.id.Tuesday);
+        final ToggleSlider wednesday = (ToggleSlider) findViewById(R.id.Wednesday);
+        final ToggleSlider thursday = (ToggleSlider) findViewById(R.id.Thursday);
+        final ToggleSlider friday = (ToggleSlider) findViewById(R.id.Friday);
+        final ToggleSlider saturday = (ToggleSlider) findViewById(R.id.Saturday);
+        final ArrayList<ToggleSlider> toggleSliders = new ArrayList<>();
+        toggleSliders.add(sunday);
+        toggleSliders.add(monday);
+        toggleSliders.add(tuesday);
+        toggleSliders.add(wednesday);
+        toggleSliders.add(thursday);
+        toggleSliders.add(friday);
+        toggleSliders.add(saturday);
 
 
         Button next = (Button) findViewById(R.id.btn_next);
@@ -58,7 +58,7 @@ public class SetWeekly extends ActionBarActivity {
             public void onClick(View view) {
                    boolean[] weekdays = new boolean[7];//boolean string i.e "0011010"
                    int x = 0;
-                   for(CustomSwitch c: customSwitches){
+                for (ToggleSlider c : toggleSliders) {
                        weekdays[x] = c.isChecked();
                        x++;
                    }

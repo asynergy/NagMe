@@ -17,12 +17,12 @@ import android.widget.TextView;
  * This class creates a toggle slider to turn alarms on or off on specific days
  */
 
-public class CustomSwitch extends FrameLayout {
+public class ToggleSlider extends FrameLayout {
 
     private TextView label;
     private CompoundButton button;
 
-    public CustomSwitch (Context context, AttributeSet attrs) {
+    public ToggleSlider(Context context, AttributeSet attrs) {
         super(context, attrs);
 
         // Initialize and configure the layout
@@ -92,11 +92,11 @@ public class CustomSwitch extends FrameLayout {
         label.setText(text);
     }
 
-    public void setChecked(boolean isChecked) {
-        button.setChecked(isChecked);
-    }
-
     public boolean isChecked() {
         return button.isChecked();
+    }
+
+    public void setChecked(boolean isChecked) {
+        button.setChecked(isChecked);
     }
 }

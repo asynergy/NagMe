@@ -3,10 +3,6 @@ package asynergy.yin.ying.Nagme;
 import java.util.Calendar;
 
 /**
- * Created by lepandori on 3/7/15.
- *
- * Modified by Tyra He
- *
  *  ReminderOneTime defines specific behavior in the oneTime reminder mode. This class implements the
  *  interface ReminderTime class. It sets a oneTime reminder, and every time a oneTime reminder
  *  rings, it will disable this alarm by setting a flag in the database. Same as other reminder
@@ -27,6 +23,11 @@ public class ReminderOneTime implements ReminderTime {
     private int month;
     private int day;
     private Calendar date;
+
+    //empty constructor
+    public ReminderOneTime() {
+
+    }
 
     //improved constructor
     public ReminderOneTime(int year, int month, int day, int hour, int min) {

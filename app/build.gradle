@@ -4,6 +4,10 @@ android {
     compileSdkVersion 23
     buildToolsVersion '26.0.2'
 
+    lintOptions {
+        disable "ResourceType"
+    }
+
     defaultConfig {
         applicationId "asynergy.yin.ying.Nagme"
         minSdkVersion 16

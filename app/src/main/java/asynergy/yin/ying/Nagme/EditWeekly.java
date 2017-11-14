@@ -3,7 +3,7 @@ package asynergy.yin.ying.Nagme;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,7 +15,7 @@ import android.widget.TimePicker;
  * EditWeekly allows a user to change the days of week and time
  * that a weekly ReminderTime rings.
  */
-public class EditWeekly extends ActionBarActivity {
+public class EditWeekly extends AppCompatActivity {
     public static long id;
     Context mContext = this;
     AlarmDBHelp dbHelper = new AlarmDBHelp(mContext);
@@ -26,13 +26,13 @@ public class EditWeekly extends ActionBarActivity {
         setContentView(R.layout.edit_weekly);
         final TextView alarmName = (TextView) findViewById(R.id.editBlank);
         final TimePicker timePicker = (TimePicker) findViewById(R.id.timePicker);
-        final CustomSwitch sunday = (CustomSwitch) findViewById(R.id.alarm_details_label_sunday);
-        final CustomSwitch monday = (CustomSwitch) findViewById(R.id.alarm_details_label_monday);
-        final CustomSwitch tuesday = (CustomSwitch) findViewById(R.id.alarm_details_label_tuesday);
-        final CustomSwitch wednesday = (CustomSwitch) findViewById(R.id.alarm_details_label_wednesday);
-        final CustomSwitch thursday = (CustomSwitch) findViewById(R.id.alarm_details_label_thursday);
-        final CustomSwitch friday = (CustomSwitch) findViewById(R.id.alarm_details_label_friday);
-        final CustomSwitch saturday = (CustomSwitch) findViewById(R.id.alarm_details_label_saturday);
+        final ToggleSlider sunday = (ToggleSlider) findViewById(R.id.alarm_details_label_sunday);
+        final ToggleSlider monday = (ToggleSlider) findViewById(R.id.alarm_details_label_monday);
+        final ToggleSlider tuesday = (ToggleSlider) findViewById(R.id.alarm_details_label_tuesday);
+        final ToggleSlider wednesday = (ToggleSlider) findViewById(R.id.alarm_details_label_wednesday);
+        final ToggleSlider thursday = (ToggleSlider) findViewById(R.id.alarm_details_label_thursday);
+        final ToggleSlider friday = (ToggleSlider) findViewById(R.id.alarm_details_label_friday);
+        final ToggleSlider saturday = (ToggleSlider) findViewById(R.id.alarm_details_label_saturday);
 
         //get alarm details previously set for weekly remindertime
         Intent thisIntent = getIntent();
