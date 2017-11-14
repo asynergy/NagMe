@@ -3,7 +3,7 @@ package asynergy.yin.ying.Nagme;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,7 +15,7 @@ import java.util.Calendar;
 /**
  * Set time allows the user to set the date of the ReminderTime they are creating.
  */
-public class SetTime extends ActionBarActivity {
+public class SetTime extends AppCompatActivity {
         private TimePicker timePicker;
         private Button button;
         private AlarmDBHelp dbHelper = new AlarmDBHelp(this);

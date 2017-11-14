@@ -2,7 +2,7 @@ package asynergy.yin.ying.Nagme;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,7 +14,7 @@ import android.widget.Spinner;
  * Set monthly allows a user to set the week of the month, and day of the week
  * of a monthly ReminderTime.
  */
-public class SetMonthly extends ActionBarActivity {
+public class SetMonthly extends AppCompatActivity {
 
     public static final String WEEK_NUMBER = "week_number";
 

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -38,14 +38,9 @@ import java.util.Date;
  */
 
 
-public class ReminderListActivity extends ActionBarActivity {
+public class ReminderListActivity extends AppCompatActivity {
 
-    // A DBHelper allows access to the database, the adapter populates the ListView
-    private AlarmDBHelp dbHelper = new AlarmDBHelp(this);
-    private ReminderListAdapter mAdapter;
-    private Context mContext;
     public static SwipeToDismissTouchListener<ListViewAdapter> touchListener;
-
     // Global strings allow us to reference data passed through intents
     public static String ALARM_DATE = "alarm_date";
     public static String EXISTING_MODEL = "existing_model";
@@ -60,12 +55,13 @@ public class ReminderListActivity extends ActionBarActivity {
     public static String WEEKDAYS = "week_days";
     public static String MIN_BETWEEN_SNOOZE = "snooze";
     public static long alarmId = -1;
+    public static String alarm_tone = "Default";
     private static String[] weekdays = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
     private static String[] stringIndices = {"1st", "2nd", "3rd", "4th", "5th"};
-
-    public static String alarm_tone = "Default";
-
-
+    // A DBHelper allows access to the database, the adapter populates the ListView
+    private AlarmDBHelp dbHelper = new AlarmDBHelp(this);
+    private ReminderListAdapter mAdapter;
+    private Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -262,7 +258,7 @@ public class ReminderListActivity extends ActionBarActivity {
                     String dateString = reminderTime.getDateString();
                     DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
                     try {
-                        date = (Date) dateFormatter.parse(dateString);
+                        date = dateFormatter.parse(dateString);
                     } catch (ParseException e) {
                         e.printStackTrace();
                     }

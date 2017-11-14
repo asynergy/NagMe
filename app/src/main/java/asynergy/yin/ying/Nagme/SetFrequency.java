@@ -4,7 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,7 +15,7 @@ import android.widget.Button;
  * SetFrequency redirects the user to an appropriate workflow to set the details
  * of the ReminderTime
  */
-public class SetFrequency extends ActionBarActivity {
+public class SetFrequency extends AppCompatActivity {
 
     public static String REMINDER_TYPE = "reminder_type";
     @Override
