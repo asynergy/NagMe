@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/alarm_screen_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="false"
+        android:layout_marginTop="150dp"
+        android:textSize="38sp"
+        android:text="@string/hello"
+        android:layout_alignParentRight="false"
+        android:layout_centerHorizontal="true" android:layout_alignParentEnd="false" />
+
+    <!--<TextView-->
+        <!--android:id="@+id/alarm_screen_time"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@+id/alarm_screen_name"-->
+        <!--android:layout_marginTop="28dp"-->
+        <!--android:textSize="52dp"-->
+        <!--android:text="00:00"-->
+        <!--android:layout_alignParentTop="false"-->
+        <!--android:gravity="center_horizontal"-->
+        <!--android:layout_centerHorizontal="true" />-->
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/alarm_screen_name"
+        android:gravity="bottom"
+        android:layout_margin="28dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center|start">
+
+            <FrameLayout
+                android:id="@+id/dismiss_start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom">
+                <ImageView
+                    android:src="@drawable/oval"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" android:contentDescription="@string/todo" />
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_gravity="center"
+                    android:src="@drawable/right_arrow" android:contentDescription="@string/todo" />
+
+            </FrameLayout>
+
+
+        </LinearLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/snooze"
+            android:id="@+id/snooze"
+            android:layout_gravity="center_vertical" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/dismiss_end"
+            android:layout_weight="1"
+            android:gravity="end">
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="end"
+                    android:contentDescription="@string/dismiss_target"
+                    android:src="@drawable/oval_droptarget" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/dismiss"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </FrameLayout>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

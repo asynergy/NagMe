@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+
+    <RelativeLayout
+        android:id="@+id/alarm_item"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/alarm_item_name"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="Medium Text"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <ImageView
+            android:id="@+id/alarm_reminder_icon"
+            android:src="@drawable/reminder_count_icon"
+            android:layout_toEndOf="@+id/alarm_item_name"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true" android:contentDescription="@string/todo" />
+
+        <TextView
+            android:id="@+id/alarm_reminderCount"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/alarm_reminder_icon"
+            android:layout_toRightOf="@+id/alarm_reminder_icon"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <ImageView
+            android:id="@+id/snooze_icon"
+            android:src="@drawable/snooze"
+            android:maxHeight="30dp"
+            android:layout_toStartOf="@+id/alarm_snoozeTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:adjustViewBounds="true" android:contentDescription="@string/todo" />
+
+        <TextView
+            android:id="@+id/alarm_snoozeTime"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/zzz"
+            android:layout_centerVertical="true"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_toStartOf="@+id/alarm_item_toggle"
+            android:layout_marginLeft="5dp" android:layout_marginStart="5dp" />
+
+        <ToggleButton
+            android:id="@+id/alarm_item_toggle"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center|start"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:weightSum="3">
+
+        <LinearLayout
+            android:id="@+id/txt_delete"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#d0d00f"
+            android:baselineAligned="false"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:clickable="false"
+                android:hapticFeedbackEnabled="true"
+                android:text="@string/deleted"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/txt_undo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:clickable="false"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:text="@string/undo"
+            android:textColor="#DD2ECCFA" />
+
+    </LinearLayout>
+</FrameLayout>

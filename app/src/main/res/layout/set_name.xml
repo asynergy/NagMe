@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin">
+
+    <TextView
+        android:id="@+id/alarmName"
+        android:text="@string/name_of_alarm"
+        android:textSize="25sp"
+        android:textColor="#FFFFFF"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:id = "@+id/setName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+    android:inputType="" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.24"/>
+    <TextView
+        android:id="@+id/snooze"
+        android:text="@string/snooze_time_in_minutes"
+        android:textSize="25sp"
+        android:textColor="#FFFFFF"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <EditText
+        android:id = "@+id/snoozeTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"/>
+
+    <LinearLayout
+        android:id = "@+id/alarm_ringtone_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="25dp">
+        <TextView
+            android:id="@+id/alarm_label_tone"
+            android:text="@string/alarm_tone"
+            android:textSize="18sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/alarm_label_tone_selection"
+            android:text="@string/silent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_next"
+        style="@style/actionbutton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="@string/next" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.94" />
+</LinearLayout>

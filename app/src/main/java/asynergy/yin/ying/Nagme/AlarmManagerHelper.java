@@ -1,0 +1,91 @@
+package asynergy.yin.ying.Nagme;
+
+import android.annotation.SuppressLint;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Build;
+
+import java.util.List;
+
+/**
+ * Schedules alarms using AlarmManger. Extends BroadcastReceiver
+ * to run on boot and reset all the alarms stored in the database.
+ */
+public class AlarmManagerHelper extends BroadcastReceiver{
+    public static final String REMINDER_ID = "id";
+    public static final String NAME = "name";
+    public static final String TONE = "alarmTone";
+
+
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        setAlarms(context);
+    }
+
+    public static synchronized void setAlarms(Context context) {
+        cancelAlarms(context);
+        AlarmDBHelp dbHelper = new AlarmDBHelp(context);
+        List<AlarmModel> alarms = dbHelper.getAlarms();
+
+        if(alarms != null){
+            for(AlarmModel alarm: alarms){
+                if(alarm.isEnabled()){
+                    long timeInMillis = alarm.getNextReminderTime();
+                    PendingIntent pIntent = createPendingIntent(context, alarm);
+                    if(timeInMillis > 0) {
+                        setAlarm(context, timeInMillis, pIntent);
+                    }
+                }
+            }
+        }
+    }
+
+    @SuppressLint("NewApi")
+    private static void setAlarm(Context context, long timeInMillis, PendingIntent pIntent) {
+
+            AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                alarmManager.setExact(AlarmManager.RTC_WAKEUP, timeInMillis, pIntent);
+            } else {
+                alarmManager.set(AlarmManager.RTC_WAKEUP, timeInMillis, pIntent);
+            }
+    }
+
+    /*
+     * Note: to cancel an alarm we need to build an instance of the pending
+     * intent exactly as we did when the alarm was set. We need to make sure
+     * we cancel alarms before we make changes to them, only then can we set them
+     * again. Otherwise we might leave scheduled alarms that we can no longer
+     * reference.
+     */
+    public static synchronized void cancelAlarms(Context context) {
+        AlarmDBHelp dbHelper = new AlarmDBHelp(context);
+        List<AlarmModel> alarms = dbHelper.getAlarms();
+
+        if (alarms != null) {
+            for (AlarmModel alarm : alarms) {
+                if (alarm.isEnabled()) {
+                    PendingIntent pIntent = createPendingIntent(context, alarm);
+                    AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+                    alarmManager.cancel(pIntent);
+                }
+            }
+        }
+    }
+
+    //creates pending intent in uniform way
+    private static PendingIntent createPendingIntent(Context context, AlarmModel model) {
+        Intent intent = new Intent(context, AlarmService.class);
+
+        //from the model get currentreminder id :)
+
+        intent.putExtra(NAME, model.name);
+        intent.putExtra(TONE, model.alarmTone.toString());
+        intent.putExtra(REMINDER_ID, model.getReminderId());
+        return PendingIntent.getService(context, (int) model.getId(), intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+    }
+}
